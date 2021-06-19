@@ -7,7 +7,7 @@ const dark = {
     ...DarkTheme.colors,
     primary: 'blue',
     secondary: '#cccaca',
-    background: COLORS.matteBlack,
+    backgroundColor: COLORS.matteBlack,
     tabActiveTintColor: 'white',
     tabInactiveTintColor: 'gray',
   },

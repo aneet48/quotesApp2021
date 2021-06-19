@@ -10,16 +10,17 @@ const Tab = createBottomTabNavigator();
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBarIconSettings from './TabBarIconSettings';
 import Header from '../components/Header';
+import { COLORS } from '../theme/colors';
 // create a component
 const HomeRoute = ({theme}) => {
   const curTheme = useTheme();
   return (
     <View style={styles.container}>
       <Header />
-      <Switch
+      {/* <Switch
         value={curTheme.mode === 'dark'}
         onValueChange={value => curTheme.setMode(value ? 'dark' : 'light')}
-      />
+      /> */}
       {/* <Text>
         m Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -46,7 +47,8 @@ const HomeRoute = ({theme}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#2c3e50',
+    backgroundColor:COLORS.matteBlack,
+    // backgroundColor:'blue',
   },
 });
 

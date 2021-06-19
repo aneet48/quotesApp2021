@@ -7,7 +7,7 @@ const light = {
     ...DefaultTheme.colors,
     primary: 'pink',
     secondary:  COLORS.matteBlack,
-    background: 'white',
+    backgroundColor: 'white',
     tabActiveTintColor:COLORS.matteBlack,
     tabInactiveTintColor:COLORS.gray1,
   },
