@@ -2,7 +2,6 @@ import React, {useRef, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
 import {withTheme} from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Entypo';
-import {COLORS} from '../theme/colors';
 
 const Header = ({theme}) => {
   const topBar = useRef(new Animated.Value(0)).current;
@@ -103,6 +102,7 @@ const Header = ({theme}) => {
               onPress={handleOnPress}
               style={styles.menuIconContainer}>
               <Animated.View
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                   ...styles.barfull,
                   backgroundColor: theme.secondary,
@@ -115,7 +115,8 @@ const Header = ({theme}) => {
                       }),
                     },
                   ],
-                }}></Animated.View>
+                }}
+              />
               <Animated.View
                 style={{
                   ...styles.barfull,
@@ -130,7 +131,8 @@ const Header = ({theme}) => {
                     },
                   ],
                   width: bottomWidth,
-                }}></Animated.View>
+                }}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -188,31 +190,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   menuIconContainer: {
-    // borderWidth: 1,
-    borderRadius: 100,
-    // borderColor: 'rgba(255,255,255,0.2)',
-    paddingHorizontal: 10,
-    paddingVertical: 20,
-    // position: 'absolute',
-    // top:2,
-    // right: 2,
-  },
-  menuIconInnerContainer: {
-    // position: 'relative',
-    elevation: 10,
+    borderWidth: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 15,
+    backgroundColor: '#232222',
+    elevation: 12,
     shadowColor: 'gray',
-    borderColor: '#232222',
+    borderTopColor: '#232222',
+    borderLeftColor: '#232222',
+    borderRightColor: 'rgba(0,0,0,0.5)',
+    borderBottomColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {
-      width: 10,
-      height: 20,
+      width: 100,
+      height: 100,
     },
     shadowOpacity: 0.5,
-    shadowRadius: 4,
-    borderWidth: 1,
-    borderRadius: 100,
-    height: 50,
-    width: 50,
-    backgroundColor: '#232222',
+    shadowRadius: 20,
+    borderRadius: 21,
   },
 });
 

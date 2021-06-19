@@ -1,40 +1,40 @@
 //import liraries
 import React, {useEffect, useRef} from 'react';
-import {View, Text, StyleSheet, Animated} from 'react-native';
+import {View, StyleSheet, Animated} from 'react-native';
 import {COLORS} from '../../theme/colors';
 
 const FourPointStar = ({type = 'm', color = null, delay = 100}) => {
   const sparkle = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    const sparkleFunction = () => {
+      Animated.sequence([
+        Animated.timing(sparkle, {
+          duration: 200,
+          toValue: 0,
+          useNativeDriver: false,
+        }),
+        Animated.timing(sparkle, {
+          duration: 1000,
+          toValue: 1,
+          useNativeDriver: false,
+        }),
+        Animated.timing(sparkle, {
+          duration: 1000,
+          toValue: 0,
+          useNativeDriver: false,
+        }),
+      ]).start(e => {
+        if (e.finished) {
+          sparkleFunction();
+        }
+      });
+    };
+
     setTimeout(() => {
       sparkleFunction();
     }, delay);
-  }, [sparkle]);
-
-  const sparkleFunction = () => {
-    Animated.sequence([
-      Animated.timing(sparkle, {
-        duration: 200,
-        toValue: 0,
-        useNativeDriver: false,
-      }),
-      Animated.timing(sparkle, {
-        duration: 1000,
-        toValue: 1,
-        useNativeDriver: false,
-      }),
-      Animated.timing(sparkle, {
-        duration: 1000,
-        toValue: 0,
-        useNativeDriver: false,
-      }),
-    ]).start(e => {
-      if (e.finished) {
-        sparkleFunction();
-      }
-    });
-  };
+  }, [sparkle, delay]);
 
   const getShapeStyle = () => {
     let shapeStyle = styles.shape;
@@ -52,11 +52,11 @@ const FourPointStar = ({type = 'm', color = null, delay = 100}) => {
 
   return (
     <Animated.View style={{...styles.container, opacity: sparkle}}>
-      <View style={[getShapeStyle()]}></View>
-      <View style={[getShapeStyle(), styles.bottom]}></View>
+      <View style={[getShapeStyle()]} />
+      <View style={[getShapeStyle(), styles.bottom]} />
       <View style={styles.rotateShape}>
-        <View style={getShapeStyle()}></View>
-        <View style={[getShapeStyle(), styles.bottom]}></View>
+        <View style={getShapeStyle()} />
+        <View style={[getShapeStyle(), styles.bottom]} />
       </View>
     </Animated.View>
   );
