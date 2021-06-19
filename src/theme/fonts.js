@@ -1,4 +1,4 @@
-export const FONTS={
-    ArefRuqaaBold:'ArefRuqaa-Bold',
-    ArefRuqaaRegular:'ArefRuqaa-Regular',
-}
+export const FONTS = {
+  ArefRuqaaBold: 'ArefRuqaa-Bold',
+  ArefRuqaaRegular: 'ArefRuqaa-Regular',
+};

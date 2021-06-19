@@ -1,7 +1,15 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Animated} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Animated,
+} from 'react-native';
 import {withTheme} from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Entypo';
+import {FONTS} from '../theme/fonts';
 
 const Header = ({theme}) => {
   const topBar = useRef(new Animated.Value(0)).current;
@@ -43,7 +51,7 @@ const Header = ({theme}) => {
         useNativeDriver: false,
       }),
       Animated.timing(fadeIn, {
-        duration: 500,
+        duration: 200,
         toValue: 1,
         useNativeDriver: false,
       }),
@@ -58,7 +66,7 @@ const Header = ({theme}) => {
         useNativeDriver: false,
       }),
       Animated.timing(fadeIn, {
-        duration: 500,
+        duration: 200,
         toValue: 0,
         useNativeDriver: false,
       }),
@@ -67,7 +75,7 @@ const Header = ({theme}) => {
 
   return (
     <View>
-      <View>
+      <ScrollView>
         <Animated.View
           style={{
             ...styles.menucontainer,
@@ -88,10 +96,23 @@ const Header = ({theme}) => {
             ],
           }}>
           <View style={styles.menuInnerContainer}>
-            <Text style={{color: theme.secondary}}>test area</Text>
+            <TouchableOpacity style={[styles.selectedMenu]}>
+              <Text style={[styles.menuItemText, styles.selectedMenuText]}>
+                Menu 1
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Menu 2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Menu 2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Menu 2</Text>
+            </TouchableOpacity>
           </View>
         </Animated.View>
-      </View>
+      </ScrollView>
       <View style={styles.container}>
         <TouchableOpacity>
           <Icon name="magnifying-glass" size={22} color={theme.secondary} />
@@ -146,8 +167,8 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     position: 'absolute',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -161,7 +182,7 @@ const styles = StyleSheet.create({
     width: 25,
   },
   menucontainer: {
-    height: 300,
+    // height: 300,
     width: '70%',
     alignSelf: 'flex-end',
     borderBottomLeftRadius: 20,
@@ -179,6 +200,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   menuInnerContainer: {
+    paddingTop: 80,
+    paddingHorizontal: 15,
     height: '100%',
     width: '100%',
     borderWidth: 0.5,
@@ -194,10 +217,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 15,
     backgroundColor: '#232222',
-    elevation: 12,
+    elevation: 10,
     shadowColor: 'gray',
-    borderTopColor: '#232222',
-    borderLeftColor: '#232222',
+    borderTopColor: '#292828',
+    borderLeftColor: '#292828',
     borderRightColor: 'rgba(0,0,0,0.5)',
     borderBottomColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {
@@ -207,6 +230,53 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 20,
     borderRadius: 21,
+  },
+  menuItemText: {
+    color: 'gray',
+    fontFamily: FONTS.ArefRuqaaBold,
+    fontSize: 16,
+  },
+  menuItem: {
+    borderWidth: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: '#232222',
+    elevation: 5,
+    shadowColor: 'gray',
+    borderTopColor: '#292828',
+    borderLeftColor: '#292828',
+    borderRightColor: 'rgba(0,0,0,0.5)',
+    borderBottomColor: 'rgba(0,0,0,0.5)',
+    shadowOffset: {
+      width: 100,
+      height: 100,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,
+    borderRadius: 20,
+    marginBottom: 15,
+    marginRight: 15,
+  },
+  selectedMenu: {
+    borderWidth: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: '#232222',
+    elevation: 5,
+    shadowColor: 'rgba(0,0,0,0.5)',
+    borderTopColor: 'rgba(0,0,0,0.5)',
+    borderLeftColor: 'rgba(0,0,0,0.5)',
+    borderRightColor: '#292828',
+    borderBottomColor: '#292828',
+    shadowOffset: {
+      width: 100,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,
+    borderRadius: 20,
+    marginBottom: 15,
+    marginRight: 15,
   },
 });
 
